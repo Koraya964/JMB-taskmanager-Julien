@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JMB_TaskManager :: Register</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // Palette du figma
+            bg: '#A8C3EA',    // Bleu clair
+            card: '##5D62EE',  // Bleu
+            border: '#334155',
+            text: '#000',  // Noir
+            primary: '#000', // Noir
+          },
+          fontFamily: {
+            mono: ['Fira Code', 'Courier New', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-bg text-text min-h-screen flex flex-col items-center justify-center p-4 font-sans">
+
+  <div class="text-center mb-10">
+    <div class="flex items-center justify-center gap-3 mb-4">
+      <div class="w-12 h-12 rounded bg-primary flex items-center justify-center font-mono font-bold text-bg text-2xl">
+        >_ </div>
+      <h1 class="text-4xl font-mono font-bold tracking-tight">JMB<span class="text-primary">.tasks</span></h1>
+    </div>
+    <p class="teblackate-400 font-mono text-sm">user@jmb:Signup <span class="animate-pulse">_</span></p>
+  </div>
+
+  <div class="w-full max-w-md bg-card p-8 rounded-xl border-2 border-border shadow-2xl">
+
+    <div id="alert" class="hidden mb-6 p-4 rounded text-sm font-mono" role="alert"></div>
+
+    <div class="space-y-6">
+      <div>
+        <label for="username" class="block text-sm font-semibold text-black mb-2">Username</label>
+        <input
+          class="w-full px-4 py-3 border-2 border-border rounded bg-bg text-text font-mono focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition"
+          type="text" id="username" placeholder="dev_name" autocomplete="username" spellcheck="false" />
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-semibold text-black mb-2">Email</label>
+        <input
+          class="w-full px-4 py-3 border-2 border-border rounded bg-bg text-text font-mono focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition"
+          type="email" id="email" placeholder="dev@jmb.io" autocomplete="email" spellcheck="false" />
+      </div>
+
+      <div>
+        <label for="password" class="block text-sm font-semibold text-black mb-2">Password</label>
+        <div class="relative">
+          <input
+            class="w-full px-4 py-3 border-2 border-border rounded bg-bg text-text font-mono focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition"
+            type="password" id="password" placeholder="********" autocomplete="new-password" />
+          <button type="button" id="togglePassword"
+            class="absolute inset-y-0 right-0 pr-3 flex items-center text-black hover:text-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+              <path fill-rule="evenodd"
+                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <label for="confirmPassword" class="block text-sm font-semibold text-black mb-2">Confirm Password</label>
+        <div class="relative">
+          <input
+            class="w-full px-4 py-3 border-2 border-border rounded bg-bg text-text font-mono focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition"
+            type="password" id="confirmPassword" placeholder="********" autocomplete="new-password" />
+          <button type="button" id="toggleConfirmPassword"
+            class="absolute inset-y-0 right-0 pr-3 flex items-center teblackate-400 hover:text-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+              <path fill-rule="evenodd"
+                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+        <p class="text-xs teblackate-500 mt-2 font-mono">> min_length: 12</p>
+      </div>
+
+      <button
+        class="w-full bg-primary text-bg font-mono font-bold py-3 px-4 rounded hover:bg-white transition duration-150 ease-in-out disabled:opacity-60"
+        id="registerBtn">
+        register()
+      </button>
+    </div>
+
+  </div>
+
+  <p class="mt-8 text-sm teblackate-400 font-mono bg-card px-4 py-2 rounded border border-border">
+    Déjà un compte ?
+    <a href="/" class="text-primary font-semibold hover:text-white">login()</a>
+  </p>
+
+  <script type="module" src="/js/register.js"></script>
+</body>
+
+</html>

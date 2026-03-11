@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JMB_TaskManager :: Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // Palette du figma
+            bg: '#A8C3EA',    // Bleu clair
+            card: '##5D62EE',  // Bleu
+            border: '#334155', // slate-700
+            text: '#000',  // Noir
+            primary: '#000', // Noir
+          },
+          fontFamily: {
+            mono: ['Fira Code', 'Courier New', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-bg text-text min-h-screen flex flex-col items-center justify-center p-4 font-sans">
+
+  <div class="text-center mb-10">
+    <div class="flex items-center justify-center gap-3 mb-4">
+      <div class="w-12 h-12 rounded bg-primary flex items-center justify-center font-mono font-bold text-bg text-2xl">
+        >_ </div>
+      <h1 class="text-4xl font-mono font-bold tracking-tight">JMB<span class="text-primary">.tasks</span></h1>
+    </div>
+    <p class="text-black font-mono text-sm">Bienvenue<span class="animate-pulse">_</span></p>
+  </div>
+
+  <div class="w-full max-w-md bg-card p-8 rounded-xl border-2 border-border shadow-2xl">
+
+    <div id="alert" class="hidden mb-6 p-4 rounded text-sm font-mono" role="alert"></div>
+
+    <div class="space-y-6">
+      <div>
+        <label for="email" class="block text-sm font-semibold text-black mb-2">Email</label>
+        <input
+          class="w-full px-4 py-3 border-2 border-border rounded bg-bg text-text placeholder-slate-500 font-mono focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition"
+          type="email" id="email" placeholder="dev@jmb.io" autocomplete="email" spellcheck="false" />
+      </div>
+
+      <div>
+        <label for="password" class="block text-sm font-semibold text-black mb-2">Password</label>
+        <input
+          class="w-full px-4 py-3 border-2 border-border rounded bg-bg placeholder-slate-500 text-text font-mono focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition"
+          type="password" id="password" placeholder="********" autocomplete="current-password" />
+      </div>
+
+      <button
+        class="w-full bg-primary text-bg font-mono font-bold py-3 px-4 rounded hover:bg-white transition duration-150 ease-in-out disabled:opacity-60"
+        id="loginBtn">
+        login()
+      </button>
+    </div>
+
+  </div>
+
+  <p class="mt-8 text-sm text-black font-mono bg-card px-4 py-2 rounded border border-border">
+    Pas de compte ?
+    <a href="/register" class="text-primary font-semibold hover:text-white">register()</a>
+  </p>
+
+  <script type="module" src="/js/login.js"></script>
+</body>
+
+</html>
