@@ -25,18 +25,23 @@ const request = async (path, opts = {}) => {
 
   const data = await res.json().catch(() => null);
 
-  // --- CORRECTION : Sécurisation de la redirection ---
+  //  CORRECTION : Sécurisation de la redirection
   if (res.status === 401) {
-    localStorage.removeItem('token');
-
-    // On ne redirige que si on n'est pas déjà sur la page de login ('/')
-    if (window.location.pathname !== '/') {
+    const PUBLIC_PATHS = ['/', '/register'];
+    if (!PUBLIC_PATHS.includes(window.location.pathname)) {
       window.location.href = '/';
     }
-
     return { ok: false, status: 401, data };
   }
-  return { ok: res.ok, status: res.status, data };
+
+  // On ne redirige que si on n'est pas déjà sur la page de login ('/')
+  if (window.location.pathname !== '/') {
+    window.location.href = '/';
+  }
+
+  return { ok: false, status: 401, data };
+}
+return { ok: res.ok, status: res.status, data };
 };
 
 // Auth (centralisation des appelle api pour les routes auth)
