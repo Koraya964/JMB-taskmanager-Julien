@@ -14,7 +14,7 @@ const colSemaine = document.getElementById('colSemaine');
 const colUrgent = document.getElementById('colUrgent');
 const colAujourdhui = document.getElementById('colAujourdhui');
 
-// Couleurs d'incateur de priorité  
+// Colors for prios
 const PRIORITY_CONFIG = {
   low: { color: 'bg-emerald-500', label: 'Basse' },
   medium: { color: 'bg-amber-400', label: 'Moyenne' },
@@ -23,7 +23,7 @@ const PRIORITY_CONFIG = {
 };
 
 /**
- * Crée un indicateur visuel de priorité (pastille colorée).
+ * Priority visual indicator.
  * @param {string} priority
  * @returns {HTMLElement}
  */
@@ -40,7 +40,7 @@ const createPriorityIndicator = (priority) => {
 // Task card 
 
 /**
- * Crée une carte de tâche pour le dashboard.
+ * Create a task card for the dashboard
  * @param {Object} task
  * @returns {HTMLElement}
  */
@@ -80,7 +80,7 @@ const createTaskCard = (task) => {
 // Column renderer 
 
 /**
- * Remplace le contenu d'une colonne avec la liste de tâches fournie.
+ * Replacing column content with the task list
  * @param {HTMLElement} colEl
  * @param {Object[]} tasks
  */
@@ -99,7 +99,7 @@ const renderColumn = (colEl, tasks) => {
 // Navigation helpers 
 
 /**
- * Redirige vers la page tasks en ouvrant le modal de création pour une catégorie.
+ * Redirection to task page and opening the modification modal with the same cat
  * @param {string} category
  */
 export const openTaskModal = (category) => {
@@ -121,7 +121,7 @@ window.navigateToEdit = navigateToEdit;
 // Load dashboard 
 
 /**
- * Charge les données du dashboard (user + tâches) et met à jour le DOM.
+ * Updating dashboard with user and task infos.
  */
 const loadDashboard = async () => {
   const { ok: meOk, data: me } = await authAPI.me();//route de vérification du status login de l'user
@@ -138,13 +138,13 @@ const loadDashboard = async () => {
   document.getElementById('statUrgent').textContent =
     tasks.filter((t) => t.category === 'urgent' && !t.is_done).length;
 
-  renderColumn(colSemaine, tasks.filter((t) => t.category === 'semaine'));
-  renderColumn(colUrgent, tasks.filter((t) => t.category === 'urgent'));
-  renderColumn(colAujourdhui, tasks.filter((t) => t.category === 'aujourd_hui'));
+  renderColumn(colSemaine, tasks.filter((t) => t.category === 'semaine')); //cat week
+  renderColumn(colUrgent, tasks.filter((t) => t.category === 'urgent'));//cat urgent
+  renderColumn(colAujourdhui, tasks.filter((t) => t.category === 'aujourd_hui'));//cat today
 };
 
 // Events 
-document.getElementById('logoutBtn').addEventListener('click', async () => { await logout() });
+document.getElementById('logoutBtn').addEventListener('click', async () => { await logout() });//Logout button
 document.getElementById('fabBtn').addEventListener('click', () => {
   window.location.href = '/tasks';//Floating action button, inspi de google
 });
