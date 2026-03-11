@@ -13,19 +13,16 @@ const BASE_URL = '/api';
  */
 
 const request = async (path, opts = {}) => {
-  // plus de getToken() ni de header Authorization
   const res = await fetch(`${BASE_URL}${path}`, {
-    credentials: 'include', // envoie du cookie
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
-      ...opts.headers, //spread des opts header (j'en ai pas en tête honnêtement)
+      ...opts.headers,
     },
-    ...opts,//spread des opts (ex METHOD : POST)
+    ...opts,
   });
-
   const data = await res.json().catch(() => null);
 
-  //  CORRECTION : Sécurisation de la redirection
   if (res.status === 401) {
     const PUBLIC_PATHS = ['/', '/register'];
     if (!PUBLIC_PATHS.includes(window.location.pathname)) {
@@ -34,15 +31,9 @@ const request = async (path, opts = {}) => {
     return { ok: false, status: 401, data };
   }
 
-  // On ne redirige que si on n'est pas déjà sur la page de login ('/')
-  if (window.location.pathname !== '/') {
-    window.location.href = '/';
-  }
-
-  return { ok: false, status: 401, data };
-}
-return { ok: res.ok, status: res.status, data };
+  return { ok: res.ok, status: res.status, data };
 };
+
 
 // Auth (centralisation des appelle api pour les routes auth)
 
