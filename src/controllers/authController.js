@@ -6,7 +6,7 @@ import db from '../models/db.js';
 //Options du cookies qui stock le JWT 
 const COOKIE_OPTS = {
   httpOnly: true,
-  sameSite: 'strict',
+  sameSite: 'lax',
   secure: process.env.NODE_ENV === 'production',
   maxAge: 3600000,
 };
